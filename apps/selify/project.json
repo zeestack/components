@@ -1,0 +1,70 @@
+{
+  "root": "apps/selify",
+  "sourceRoot": "apps/selify/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/selify",
+        "index": "apps/selify/src/index.html",
+        "baseHref": "/",
+        "main": "apps/selify/src/main.tsx",
+        "polyfills": "apps/selify/src/polyfills.ts",
+        "tsConfig": "apps/selify/tsconfig.app.json",
+        "assets": ["apps/selify/src/favicon.ico", "apps/selify/src/assets"],
+        "styles": ["apps/selify/src/styles.css"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/selify/src/environments/environment.ts",
+              "with": "apps/selify/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "options": {
+        "buildTarget": "selify:build",
+        "hmr": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "selify:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/selify/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/selify"],
+      "options": {
+        "jestConfig": "apps/selify/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}

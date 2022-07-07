@@ -1,0 +1,28 @@
+{
+  "root": "apps/selify-e2e",
+  "sourceRoot": "apps/selify-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/selify-e2e/cypress.json",
+        "devServerTarget": "selify:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "selify:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/selify-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["selify"]
+}

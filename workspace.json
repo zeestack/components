@@ -1,0 +1,7 @@
+{
+  "version": 2,
+  "projects": {
+    "selify": "apps/selify",
+    "selify-e2e": "apps/selify-e2e"
+  }
+}

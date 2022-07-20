@@ -23,13 +23,27 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nrwl/nx/typescript"],
-      "rules": {}
+      "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@nrwl/nx/typescript"
+      ],
+      "rules": {
+        "react/jsx-sort-props": [
+          "warn",
+          {
+            "ignoreCase": true,
+            "noSortAlphabetically": false,
+            "reservedFirst": false
+          }
+        ],
+        "react/react-in-jsx-scope": "off",
+        "@typescript-eslint/no-explicit-any": "off"
+      }
     },
     {
       "files": ["*.js", "*.jsx"],
-      "extends": ["plugin:@nrwl/nx/javascript"],
-      "rules": {}
+      "extends": ["plugin:@nrwl/nx/javascript"]
     }
   ]
 }
